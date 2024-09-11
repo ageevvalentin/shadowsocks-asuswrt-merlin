@@ -39,7 +39,7 @@ install() {
   /opt/etc/init.d/S02haveged start
 
   echo -e "$ansi_green Cloning shadowsocks-asuswrt-merlin... $ansi_std"
-  git clone --depth=1 https://gh-proxy.com/https://github.com/Acris/shadowsocks-asuswrt-merlin.git "$SS_MERLIN_HOME" || {
+  rm -r $SS_MERLIN_HOME || true && wget https://github.com/ageevvalentin/shadowsocks-asuswrt-merlin/archive/master.zip && unzip -o master.zip && mv shadowsocks-asuswrt-merlin-master $SS_MERLIN_HOME  && rm master.zip || {
     echo -e "$ansi_red Error: git clone of shadowsocks-asuswrt-merlin repo failed. $ansi_std"
     exit 1
   }
